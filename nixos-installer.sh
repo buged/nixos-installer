@@ -18,6 +18,7 @@ AUTO_REBOOT="false"
 
 # The WiFi configuration.
 ETH_DHCP=""
+WIFI_DHCP=""
 WIFI_ENABLE="false"
 WIFI_SSID=""
 WIFI_PASSWD=""
@@ -60,6 +61,7 @@ while [ "$#" -gt 0 ]; do
     --time-zone=*)    TIME_ZONE="${1#*=}"; shift 1;;
 
     --eth-dhcp=*)     ETH_DHCP="${1#*=}"; shift 1;;
+    --wifi-dhcp=*)    WIFI_DHCP="${1#*=}"; shift 1;;
     --wifi-enable)    WIFI_ENABLE="true"; shift 1;;
     --wifi-ssid=*)    WIFI_SSID="${1#*=}"; shift 1;;
     --wifi-passwd=*)  WIFI_PASSWD="${1#*=}"; shift 1;;
@@ -111,6 +113,7 @@ ${GEN_PATH}/gen_desktop.sh --type=${TYPE}
 # Generate the network configuration.
 ${GEN_PATH}/gen_network.sh --host-name=${HOST_NAME} \
   --eth-dhcp=${ETH_DHCP} --wifi-enable=${WIFI_ENABLE} \
+  --wifi-dhcp=${WIFI_DHCP} --wifi-enable=${WIFI_ENABLE} \
   --wifi-ssid=${WIFI_SSID} --wifi-passwd=${WIFI_PASSWD}
 
 # Generate the user configuration.
