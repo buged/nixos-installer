@@ -22,14 +22,23 @@ STR_DESKTOP="\
   environment.systemPackages = with pkgs; [
     lightdm
     lightlocker
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
-    xfce.tumbler
-    xfce.xfce4-icon-theme
   ];
 
   # Enable hardware acceleration.
   hardware.opengl.enable = true;
+  
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.epson-escpr ];
+  services.avahi.enable = true; # for CUPS to automatically find the printer via Wi-Fi
+  services.avahi.nssmdns = true; # for CUPS to automatically find the printer via Wi-Fi
+  
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  
+  # Update Intel CPU Microcode
+  hardware.cpu.intel.updateMicrocode = true;
 
   # Configure the services required for a desktop.
   services = {
@@ -37,17 +46,18 @@ STR_DESKTOP="\
       enable = true;
       layout = \"us\";
       libinput.enable = true;
+      xkbOptions = "eurosign:e";
 
-      # Make lightdm the default Display Manager and XFCE the default Desktop
+      # Make lightdm the default Display Manager and Plasma the default Desktop
       # Manager.
       displayManager = {
         lightdm.enable = true;
-        defaultSession = \"xfce\";
+        defaultSession = \"plasma\";
       };
 
-      # Enable XCE as an available Desktop Manager.
+      # Enable Plasma as an available Desktop Manager.
       desktopManager = {
-        xfce.enable = true;
+        plasma5.enable = true;
       };
     };
   };
