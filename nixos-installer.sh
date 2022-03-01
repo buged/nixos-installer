@@ -9,7 +9,7 @@ KEY=""
 TYPE=""
 
 # The timezone of the host.
-TIME_ZONE="Australia/Adelaide"
+TIME_ZONE="America/Sao_Paulo"
 
 AUTO_GC="false"
 AUTO_DEDUP="false"
