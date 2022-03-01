@@ -89,10 +89,16 @@ sudo ./nixos-installer.sh \
 --time-zone     The time zone that host is located in. Not critical to set
                 during installation, but nice to get it out of the way.
 
---eth-dhcp      The network adapter to enable for dhcp. This is nice when
+--eth-dhcp      The eth network adapter to enable for dhcp. This is nice when
                 plugged into a home or work network with a dhcp server. It will
                 allow you to immediately rebuild. The name of the adapter can
                 be determined using "ip a".
+
+--wifi-dhcp     The wifi network adapter to enable for dhcp. This is nice when
+                plugged into a home or work network with a dhcp server. It will
+                allow you to immediately rebuild. The name of the adapter can
+                be determined using "ip a".
+
 
 --wifi-enable   Whether to enable wifi or not. This will install wpa_supplicant
                 and associated wifi tools.
