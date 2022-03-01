@@ -25,6 +25,7 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     --host-name=*)    HOST_NAME="${1#*=}"; shift 1;;
     --eth-dhcp=*)     ETH_DHCP="${1#*=}"; shift 1;;
+    --wifi-dhcp=*)    WIFI_DHCP="${1#*=}"; shift 1;;
     --wifi-enable=*)  WIFI_ENABLE="${1#*=}"; shift 1;;
     --wifi-ssid=*)    WIFI_SSID="${1#*=}"; shift 1;;
     --wifi-passwd=*)  WIFI_PASSWD="${1#*=}"; shift 1;;
@@ -53,14 +54,9 @@ STR_NETWORK="\
 
   networking.useDHCP = false;"
   
-  # Enable interface wireless.
-  networking.interfaces = {
-    enable = ${WIFI_ENABLE};
-  };
-  
   # Enable NetworkManager.
   networking.networkmanager = {
-    enable = ${WIFI_ENABLE};
+    enable = true;
   };
 
 # Generate the WiFi configuration file.
@@ -75,6 +71,12 @@ echo "${STR_NETWORK}" > ${CONF_FILE}
 if [ "${ETH_DHCP}" != "" ]; then
   echo "  networking.interfaces.${ETH_DHCP}.useDHCP = true;" >> ${CONF_FILE}
 fi
+
+# Check if an wifi port has been specified.
+if [ "${WIFI_DHCP}" != "" ]; then
+  echo "  networking.interfaces.${WIFI_DHCP}.useDHCP = true;" >> ${CONF_FILE}
+fi
+
 
 # Write the terminator.
 echo "}" >> ${CONF_FILE}
