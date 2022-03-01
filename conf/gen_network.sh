@@ -52,6 +52,16 @@ STR_NETWORK="\
   };
 
   networking.useDHCP = false;"
+  
+  # Enable interface wireless.
+  networking.interfaces = {
+    enable = ${WIFI_ENABLE};
+  };
+  
+  # Enable NetworkManager.
+  networking.networkmanager = {
+    enable = ${WIFI_ENABLE};
+  };
 
 # Generate the WiFi configuration file.
 if [ "${WIFI_SSID}" != "" ]; then
