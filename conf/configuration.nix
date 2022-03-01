@@ -18,13 +18,15 @@
     ./conf/users.nix
   ];
   # Set your time zone.
-  time.timeZone = "Australia/Adelaide";
+  time.timeZone = "America/Sao_Paulo";
 
   # Install the default packages.
   environment.systemPackages = with pkgs; [
-    vim
+    vim_configurable
     wget
     htop
+    git
+    firefox
   ];
 
   # This value determines the NixOS release from which the default
