@@ -52,7 +52,7 @@ STR_NETWORK="\
     userControlled.enable = ${WIFI_ENABLE};
   };
 
-  networking.useDHCP = false;"
+  networking.useDHCP = false;
   
   # Enable NetworkManager.
   networking.networkmanager = {
