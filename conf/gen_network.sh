@@ -77,6 +77,5 @@ if [ "${WIFI_DHCP}" != "" ]; then
   echo "  networking.interfaces.${WIFI_DHCP}.useDHCP = true;" >> ${CONF_FILE}
 fi
 
-
 # Write the terminator.
 echo "}" >> ${CONF_FILE}
