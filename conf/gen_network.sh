@@ -46,6 +46,11 @@ STR_NETWORK="\
     permitRootLogin = \"no\";
   };
 
+  # Enable SSH but disable root logins.
+  networking.networkmanager = {
+    enable = true;
+  };
+
   # Enable wireless networking.
   networking.wireless = {
     enable = ${WIFI_ENABLE};
