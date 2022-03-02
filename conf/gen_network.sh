@@ -52,13 +52,8 @@ STR_NETWORK="\
     userControlled.enable = ${WIFI_ENABLE};
   };
 
-  networking.useDHCP = false;
+  networking.useDHCP = false;"
   
-  # Enable NetworkManager.
-  networking.networkmanager = {
-    enable = true;
-  };
-
 # Generate the WiFi configuration file.
 if [ "${WIFI_SSID}" != "" ]; then
   wpa_passphrase ${WIFI_SSID} ${WIFI_PASSWD} > "/mnt/etc/wpa_supplicant.conf"
