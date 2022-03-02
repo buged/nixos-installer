@@ -47,9 +47,9 @@ STR_NETWORK="\
   };
 
   # Enable SSH but disable root logins.
-  networking.networkmanager = {
-    enable = true;
-  };
+  #networking.networkmanager = {
+  #  enable = true;
+  #};
 
   # Enable wireless networking.
   networking.wireless = {
